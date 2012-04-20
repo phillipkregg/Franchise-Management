@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: features
+#
+#  id               :integer         not null, primary key
+#  feature_name     :string(255)
+#  franchise_set_id :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  feature_name: MyString
+
+two:
+  feature_name: MyString

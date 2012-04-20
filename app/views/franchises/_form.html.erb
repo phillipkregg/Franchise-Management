@@ -1,0 +1,26 @@
+<%= twitter_bootstrap_form_for([@franchise]) do |f| %>
+  <% if @franchise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@franchise.errors.count, "error") %> prohibited this franchise from being saved:</h2>
+
+      <ul>
+      <% @franchise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">    
+    <%= f.text_field :franchise_name, "Franchise Name" %>
+  </div>
+  <div class="field">    
+    <%= f.text_field :franchise_number, "Franchise Number" %>
+  </div>
+  
+  <%= hidden_field_tag :franchise_set_id, @franchise.franchise_set.id %>
+  
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary'%>
+  </div>
+<% end %>

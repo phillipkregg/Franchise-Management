@@ -1,0 +1,27 @@
+<h2>Users</h2>
+
+<table>
+  <tr>
+    <th>User Name</th>
+    <th>Franchise Set</th>
+    <th>User Domain</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.user_name %></td>
+    <td><%= user.franchise_set_id %></td>
+    <td><%= user.user_domain %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_franchise_set_user_path %>

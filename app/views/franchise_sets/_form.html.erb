@@ -1,0 +1,139 @@
+<%= twitter_bootstrap_form_for(@franchise_set) do |f| %>
+		  <% if @franchise_set.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@franchise_set.errors.count, "error") %> prohibited this franchise_set from being saved:</h2>
+		
+		      <ul>
+		      <% @franchise_set.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		
+		
+		
+		
+	<div class="well">	
+		<ul class="nav nav-tabs">
+		  <li class="active"><a href="#home" data-toggle="tab">Details</a></li>
+		  <li><a href="#profile" data-toggle="tab">Users</a></li>
+		  <li><a href="#messages" data-toggle="tab">Features</a></li>
+		  <li><a href="#settings" data-toggle="tab">Franchises</a></li>
+		</ul>
+	
+	<div class="tab-content">
+		
+		<div class="tab-pane active" id="home">
+		
+		  <div>    
+		    <%= f.text_field :set_name, 'Franchise Set Name'  %>
+		  </div>
+		  <div>    
+		    <%= f.text_field :set_id, 'Franchise Set Id'%>
+		  </div>
+		  <div>    
+		    <%= f.text_field :soa_id, "SOA Id"%>
+		  </div>
+		  <div>    
+		    <%= f.text_field :address, 'Franchise Main Address' %>
+		  </div>
+		  <div>    
+		    <%= f.select :time_zone, 'Select Time Zone', options_for_select([ "Eastern", "Central", "Mountain", "Pacific" ]) %><br />
+		  </div>
+		  <div>
+		    <%= f.select :country, 'Select Country', options_for_select([ "United States", "Canada" ], "United States") %><br />
+		  </div>
+		  <div>    
+		    <%= f.select :temperature, 'Select Default Temperature', options_for_select([ "Fahrenheit", "Celsius" ]) %><br />
+		  </div>
+		 				
+		</div>
+	
+		<div class="tab-pane" id="profile">
+			
+			<h2>Users</h2>
+
+			<table class="table">
+			  <tr>
+			    <th>User Name</th>
+			    <th>Franchise Set</th>
+			    <th>User Domain</th>			    
+			    <th></th>
+			    <th></th>
+			  </tr>
+			
+			<% @franchise_set.users.each do |user| %>
+			  <tr>
+			    <td><%= user.user_name %></td>
+			    <td><%= user.franchise_set.set_name %></td>
+			    <td><%= user.user_domain %></td>			    
+			    <td><%= link_to 'Edit', "/franchise_sets/#{@franchise_set.id}/users/#{user.id}/edit" %></td>
+			    <td><%= link_to 'Delete', "/franchise_sets/#{@franchise_set.id}/users/#{user.id}", confirm: 'Are you sure?', :method => :delete %></td>
+			  </tr>
+			  <%= hidden_field_tag :franchise_set_id, @franchise_set.id %>
+			<% end %>
+			</table>
+			
+			
+			
+			<br />
+			
+			<%= link_to 'New User', "/franchise_sets/#{@franchise_set.id}/users/new", :class => 'btn btn-primary', :remote => true %>
+
+			
+			
+			
+		</div>
+	
+		<div class="tab-pane" id="messages">
+			<% @features.each do |feature| -%>
+				<li><%= check_box_tag "franchise_set[feature.ids][]", feature.id -%> <%= feature.feature_name -%></li>
+			<% end -%>
+
+		</div>
+	
+		<div class="tab-pane" id="settings">
+	   	<h2>All Franchises</h2>
+			 <table class="table">
+			  <thead>
+			    <tr>
+			      <th>Franchise Name</th>
+			      <th>Franchise Number</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<% @franchise_set.franchises.each do |franchise| %>
+			    <tr>
+			      <td><%= franchise.franchise_name %></td>
+			      <td><%= franchise.franchise_number %></td>
+			      <td><%= link_to 'Edit', "/franchise_sets/#{@franchise_set.id}/franchises/#{franchise.id}/edit" %></td>
+    				<td><%= link_to 'Delete', "/franchise_sets/#{@franchise_set.id}/franchises/#{franchise.id}", confirm: 'Are you sure?', :method => :delete %></td>
+			    </tr>
+			    
+			   <% end %>
+			  </tbody>
+			</table>
+			
+			<%= link_to 'New Franchise', "/franchise_sets/#{@franchise_set.id}/franchises/new", :class => 'btn btn-primary' %>
+			
+			
+	   </div>
+	   
+	   
+	
+	</div>
+	
+</div>
+
+
+
+<div class="actions span12">		
+	<button type="submit" class="btn btn-primary">
+	  <i class="icon-ok icon-white"></i> Save Changes
+	</button>
+	<%= link_to 'Cancel', franchise_sets_path, :class => 'btn ' %>
+</div>
+
+
+<% end %>

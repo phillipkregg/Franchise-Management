@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FranchiseManagement</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+	  <div class="container">
+	    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </a>
+	    <a class="brand" href="#">Franchise Manager</a>
+	    <div class="nav-collapse">
+	      <ul class="nav">
+	        <li><%= link_to "Franchise Sets", franchise_sets_path, :class => "active" %></li>
+	        <li><a href="#about">Tri-State Editor</a></li>	        
+	      </ul>
+	    </div><!--/.nav-collapse -->
+	  </div>
+	</div>
+</div>
+
+
+
+<div class="container">
+	<% flash.each do |name, msg| %>
+	<div>
+		<%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert fade in" %>
+	</div>
+      
+	<% end %>
+	
+	<%= render_breadcrumbs :separator => ' / ' %>
+	
+	<%= yield %>
+</div>
+
+
+<%= debug params %>
+
+
+<!--  Modal Window Below -->
+
+<div>
+	<div id="modal-container">
+		<div id="modal" class="modal">			
+			<a class="close">Close</a> 
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>
