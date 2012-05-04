@@ -14,7 +14,7 @@ class Franchise < ActiveRecord::Base
   belongs_to :franchise_set
   
   validates :franchise_name, :presence => true
-  validates :franchise_number, :presence => true, :uniqueness => true
+  validates :franchise_number, :presence => true
   validates :franchise_set_id, :presence => true
   
 end
