@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20120419212715) do
   create_table "features", :force => true do |t|
     t.string   "feature_name"
     t.integer  "franchise_set_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "franchise_sets", :force => true do |t|
@@ -28,16 +28,16 @@ ActiveRecord::Schema.define(:version => 20120419212715) do
     t.string   "time_zone"
     t.string   "country"
     t.string   "temperature"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "franchises", :force => true do |t|
     t.string   "franchise_name"
     t.string   "franchise_number"
     t.integer  "franchise_set_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "tacos", :force => true do |t|
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(:version => 20120419212715) do
     t.string   "franchise_set_number"
     t.string   "user_domain"
     t.integer  "franchise_set_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
 end
