@@ -68,22 +68,18 @@
 			    <td><%= user.user_name %></td>
 			    <td><%= user.franchise_set.set_name %></td>
 			    <td><%= user.user_domain %></td>			    
-			    <td><%= link_to 'Edit', "/franchise_sets/#{@franchise_set.id}/users/#{user.id}/edit" %></td>
-			    <td><%= link_to 'Delete', "/franchise_sets/#{@franchise_set.id}/users/#{user.id}", confirm: 'Are you sure?', :method => :delete %></td>
+			    <td><%= link_to 'Edit', "/franchise_sets/#{@franchise_set.id}/users/#{user.id}/edit", :class => "btn btn-small" %></td>
+			    <td><%= link_to 'Delete', "/franchise_sets/#{@franchise_set.id}/users/#{user.id}", confirm: 'Are you sure?', :class => "btn btn-danger btn-small", :method => :delete %></td>
 			  </tr>
 			  <%= hidden_field_tag :franchise_set_id, @franchise_set.id %>
 			<% end %>
 			</table>
 			
-			
-			
 			<br />
 			
 			<%= link_to 'New User', "/franchise_sets/#{@franchise_set.id}/users/new", :class => 'btn btn-primary', :remote => true %>
 
-			
-			
-			
+					
 		</div>
 	
 		<div class="tab-pane" id="messages">
@@ -95,11 +91,13 @@
 	
 		<div class="tab-pane" id="settings">
 	   	<h2>All Franchises</h2>
-			 <table class="table">
+			 <table class="table" >
 			  <thead>
 			    <tr>
 			      <th>Franchise Name</th>
 			      <th>Franchise Number</th>
+			      <th></th>
+			      <th></th>			      
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -107,14 +105,15 @@
 			    <tr>
 			      <td><%= franchise.franchise_name %></td>
 			      <td><%= franchise.franchise_number %></td>
-			      <td><%= link_to 'Edit', "/franchise_sets/#{@franchise_set.id}/franchises/#{franchise.id}/edit" %></td>
-    				<td><%= link_to 'Delete', "/franchise_sets/#{@franchise_set.id}/franchises/#{franchise.id}", confirm: 'Are you sure?', :method => :delete %></td>
+			      <td><%= link_to 'Edit', "/franchise_sets/#{@franchise_set.id}/franchises/#{franchise.id}/edit", :class => 'btn btn-small' %></td>
+    				<td><%= button_to 'Delete', "/franchise_sets/#{@franchise_set.id}/franchises/#{franchise.id}", confirm: 'Are you sure?', :class => "btn btn-danger btn-small", :method => :delete %></td>
 			    </tr>
 			    
 			   <% end %>
 			  </tbody>
 			</table>
 			
+						
 			<%= link_to 'New Franchise', "/franchise_sets/#{@franchise_set.id}/franchises/new", :class => 'btn btn-primary' %>
 			
 			

@@ -23,10 +23,9 @@
     <td><%= franchise_set.address %></td>
     <td><%= franchise_set.time_zone %></td>
     <td><%= franchise_set.country %></td>
-    <td><%= franchise_set.temperature %></td>    
-    <td><%= link_to 'Show', franchise_set %></td>
-    <td><%= link_to 'Edit', edit_franchise_set_path(franchise_set) %></td>
-    <td><%= link_to 'Delete', franchise_set, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= franchise_set.temperature %></td> 
+    <td><%= link_to 'Edit', edit_franchise_set_path(franchise_set), :class => "btn" %></td>
+    <td><%= button_to 'Delete', franchise_set, confirm: 'Are you sure?', :class => "btn btn-danger", method: :delete %></td>
   </tr>
 <% end %>
 </table>

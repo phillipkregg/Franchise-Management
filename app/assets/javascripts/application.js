@@ -4,7 +4,7 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery-1.7.1.min.js
+//= require jquery
 //= require jquery_ujs
 //= require kendo.all.min.js
 //= require bootstrap
@@ -49,5 +49,30 @@ $(document).ready(function() {
 
 
 	});
+	
+	
+	
+	
+	/***** Kendo Grids *****/
+	
+	// Franchise grid
+	
+	$("#franchises_grid").kendoGrid({
+		groupable: true,
+      scrollable: true,
+      sortable: true,
+      pageable: true
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 });

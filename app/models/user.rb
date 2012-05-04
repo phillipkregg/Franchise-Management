@@ -13,4 +13,8 @@
 
 class User < ActiveRecord::Base
   belongs_to :franchise_set
+  
+  validates :user_name, :presence => true
+  validates :user_domain, :presence => true  
+  
 end

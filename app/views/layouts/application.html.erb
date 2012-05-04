@@ -32,7 +32,9 @@
 <div class="container">
 	<% flash.each do |name, msg| %>
 	<div>
-		<%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert fade in" %>
+		<a class="close" data-dismiss="alert">×</a>
+		<%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert fade in" %> 
+				
 	</div>
       
 	<% end %>
@@ -42,8 +44,6 @@
 	<%= yield %>
 </div>
 
-
-<%= debug params %>
 
 
 <!--  Modal Window Below -->
