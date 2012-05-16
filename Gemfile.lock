@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/ryanb/nested_form.git
-  revision: 63dcbcc6c6dbe07b3761ae8cc0cd04cc2a45024a
+  revision: 38c7ef348f0e1b70cd4ca7d9e14548aef3dea607
   specs:
     nested_form (0.2.0)
 

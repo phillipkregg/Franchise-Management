@@ -10,7 +10,7 @@ gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 gem "breadcrumbs_on_rails"
 gem 'pg'
 gem 'twitter_bootstrap_form_for'
-
+gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
 
 
 group :development do
@@ -24,7 +24,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.0.2'
-  gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
+  
   
 end
 
