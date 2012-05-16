@@ -14,15 +14,15 @@
 #  updated_at  :datetime
 #
 
-class FranchiseSet < ActiveRecord::Base  
+class FranchiseSet < ActiveRecord::Base    
   
-  has_many :franchises
   has_many :users
+  has_many :franchises
   has_many :features
   has_many :tacos
   
   accepts_nested_attributes_for :franchises, :allow_destroy => true
-  accepts_nested_attributes_for :users, :allow_destroy => true
+  #accepts_nested_attributes_for :users, :allow_destroy => true
   accepts_nested_attributes_for :features, :allow_destroy => true
   accepts_nested_attributes_for :tacos
   

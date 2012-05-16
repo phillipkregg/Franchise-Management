@@ -2,7 +2,7 @@
 
   	  	
   	
-  	<%= twitter_bootstrap_form_for(@user) do |f| %>
+  	<%= twitter_bootstrap_form_for([@franchise_set, @user]) do |f| %>
 	  <% if @user.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -17,13 +17,14 @@
 	
 	  <div class="field">	    
 	    <%= f.text_field :user_name %>
-	  </div>
-	  
-	  <div class="field">	    
 	    <%= f.text_field :user_domain %>
 	  </div>
 	  
-	  <%= hidden_field_tag :franchise_set_id, @user.franchise_set.id %>
+	  <div class="field">	    
+	    
+	  </div>
+	  
+	  
 	  
 	  
 	  <div class="actions">

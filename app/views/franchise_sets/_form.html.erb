@@ -82,7 +82,7 @@
 			
 			<br />
 			
-			<%= link_to 'New User', "/franchise_sets/#{@franchise_set.id}/users/new", :class => 'btn btn-primary', :remote => true %>
+			<%= link_to 'New User', new_franchise_set_user_path([@franchise_set]), :class => 'btn btn-primary' %>
 
 					
 		</div>

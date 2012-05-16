@@ -14,39 +14,39 @@
 $(document).ready(function() {
 	
 //  Modal Window 
-	$(function(){
-	  var $modal = $('#modal'),
-	      $modal_close = $modal.find('.close'),
-	      $modal_container = $('#modal-container');
-
-
-	  // This bit can be confusing. Since Rails.js sends an accept header asking for
-	  // javascript, but we want it to return HTML, we need to override this instead.
-	  $('a[data-remote]').bind('ajax:beforeSend', function(e, xhr, settings){
-	    xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
-	  });
-
-	  // Handle modal links with the data-remote attribute
-	  $('a[data-remote]').bind('ajax:success', function(xhr, data, status){
-	    $modal
-	      .html(data)
-	      .prepend($modal_close)
-	      .css('top', $(window).scrollTop() + 40)
-	      .show();
-	    $modal.fadeIn("fast");	    
-	    $modal_container.fadeIn("fast");
-
-	  });
-
-	  // Hide close button click
-	  $('.close', '#modal').live('click', function(){
-	    $modal_container.hide();
-	    $modal.hide();
-
-	  });	 
-
-
-	});
+	// $(function(){
+	  // var $modal = $('#modal'),
+	      // $modal_close = $modal.find('.close'),
+	      // $modal_container = $('#modal-container');
+// 
+// 
+	  // // This bit can be confusing. Since Rails.js sends an accept header asking for
+	  // // javascript, but we want it to return HTML, we need to override this instead.
+	  // $('a[data-remote]').bind('ajax:beforeSend', function(e, xhr, settings){
+	    // xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
+	  // });
+// 
+	  // // Handle modal links with the data-remote attribute
+	  // $('a[data-remote]').bind('ajax:success', function(xhr, data, status){
+	    // $modal
+	      // .html(data)
+	      // .prepend($modal_close)
+	      // .css('top', $(window).scrollTop() + 40)
+	      // .show();
+	    // $modal.fadeIn("fast");	    
+	    // $modal_container.fadeIn("fast");
+// 
+	  // });
+// 
+	  // // Hide close button click
+	  // $('.close', '#modal').live('click', function(){
+	    // $modal_container.hide();
+	    // $modal.hide();
+// 
+	  // });	 
+// 
+// 
+	// });
 	
 	
 	

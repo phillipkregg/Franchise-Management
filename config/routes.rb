@@ -1,13 +1,10 @@
 FranchiseManagement::Application.routes.draw do
-  resources :franchises 
-
-  resources :features
-
-  resources :users
-
-  resources :franchise_sets do
-    resources :franchises
+  
+  resources :features  
+   
+  resources :franchise_sets do    
     resources :users
+    resources :franchises
   end
 
   # The priority is based upon order of creation:
