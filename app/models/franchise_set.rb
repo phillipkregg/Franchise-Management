@@ -26,6 +26,11 @@ class FranchiseSet < ActiveRecord::Base
   accepts_nested_attributes_for :features, :allow_destroy => true
   accepts_nested_attributes_for :tacos
   
+  attr_accessible :set_name, :set_id, :soa_id, :address, :time_zone, :country, :temperature
+  attr_accessible :franchises_attributes
+  attr_accessible :users_attributes
+  attr_accessible :features_attributes
+  
   validates :set_name, :presence => true
   validates :set_id, :presence => true
   validates :soa_id, :presence => true

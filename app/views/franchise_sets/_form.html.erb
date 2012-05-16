@@ -1,4 +1,4 @@
-<%= twitter_bootstrap_form_for(@franchise_set) do |f| %>
+<%= nested_form_for(@franchise_set) do |set_form| %>
 		  <% if @franchise_set.errors.any? %>
 		    <div id="error_explanation">
 		      <h2><%= pluralize(@franchise_set.errors.count, "error") %> prohibited this franchise_set from being saved:</h2>
@@ -10,8 +10,6 @@
 		      </ul>
 		    </div>
 		  <% end %>
-		
-		
 		
 		
 	<div class="well">	
@@ -27,25 +25,32 @@
 		<div class="tab-pane active" id="home">
 		
 		  <div>    
-		    <%= f.text_field :set_name, 'Franchise Set Name'  %>
+		  	 <%= set_form.label :set_name, "Franchise Set Name" %>
+		    <%= set_form.text_field :set_name %>
 		  </div>
 		  <div>    
-		    <%= f.text_field :set_id, 'Franchise Set Id'%>
+		  	 <%= set_form.label :set_id, "Franchise Set ID" %>
+		    <%= set_form.text_field :set_id %>
 		  </div>
 		  <div>    
-		    <%= f.text_field :soa_id, "SOA Id"%>
+		  	 <%= set_form.label :soa_id, "SOA ID" %>
+		    <%= set_form.text_field :soa_id %>
 		  </div>
-		  <div>    
-		    <%= f.text_field :address, 'Franchise Main Address' %>
+		  <div> 
+		  	 <%= set_form.label :address, "Address" %>   
+		    <%= set_form.text_field :address %>
 		  </div>
-		  <div>    
-		    <%= f.select :time_zone, 'Select Time Zone', options_for_select([ "Eastern", "Central", "Mountain", "Pacific" ]) %><br />
+		  <div>  
+		  	 <%= set_form.label :time_zone, "Time Zone" %>  
+		    <%= set_form.select :time_zone, options_for_select([ "Eastern", "Central", "Mountain", "Pacific" ]) %><br />
 		  </div>
 		  <div>
-		    <%= f.select :country, 'Select Country', options_for_select([ "United States", "Canada" ], "United States") %><br />
+		  	 <%= set_form.label :country, "Country" %>
+		    <%= set_form.select :country, options_for_select([ "United States", "Canada" ], "United States") %><br />
 		  </div>
-		  <div>    
-		    <%= f.select :temperature, 'Select Default Temperature', options_for_select([ "Fahrenheit", "Celsius" ]) %><br />
+		  <div>   
+		  	 <%= set_form.label :temperature, "Temperature" %> 
+		    <%= set_form.select :temperature, options_for_select([ "Fahrenheit", "Celsius" ]) %><br />
 		  </div>
 		 				
 		</div>
@@ -71,7 +76,7 @@
 			    <td><%= link_to 'Edit', "/franchise_sets/#{@franchise_set.id}/users/#{user.id}/edit", :class => "btn btn-small" %></td>
 			    <td><%= link_to 'Delete', "/franchise_sets/#{@franchise_set.id}/users/#{user.id}", confirm: 'Are you sure?', :class => "btn btn-danger btn-small", :method => :delete %></td>
 			  </tr>
-			  <%= hidden_field_tag :franchise_set_id, @franchise_set.id %>
+			  
 			<% end %>
 			</table>
 			
@@ -83,52 +88,50 @@
 		</div>
 	
 		<div class="tab-pane" id="messages">
-			<% @features.each do |feature| -%>
-				<li><%= check_box_tag "franchise_set[feature.ids][]", feature.id -%> <%= feature.feature_name -%></li>
-			<% end -%>
+			
 
 		</div>
 	
 		<div class="tab-pane" id="settings">
 	   	<h2>All Franchises</h2>
-			 <table class="table" >
-			  <thead>
-			    <tr>
-			      <th>Franchise Name</th>
-			      <th>Franchise Number</th>
-			      <th></th>
-			      <th></th>			      
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<% @franchise_set.franchises.each do |franchise| %>
-			    <tr>
-			      <td><%= franchise.franchise_name %></td>
-			      <td><%= franchise.franchise_number %></td>
-			      <td><%= link_to 'Edit', "/franchise_sets/#{@franchise_set.id}/franchises/#{franchise.id}/edit", :class => 'btn btn-small' %></td>
-    				<td><%= button_to 'Delete', "/franchise_sets/#{@franchise_set.id}/franchises/#{franchise.id}", confirm: 'Are you sure?', :class => "btn btn-danger btn-small", :method => :delete %></td>
-			    </tr>
-			    
-			   <% end %>
-			  </tbody>
-			</table>
-			
+			 			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Franchise Name</th>
+						<th>Franchise Number</th>
+					</tr>
+					
+				</thead>
+				<tbody>	
+			<%= set_form.fields_for :franchises do |franchise_form| %>	
+			<fieldset>			
+				<tr>
+					<td>						
+						<%= franchise_form.text_field :franchise_name %>
+						<a href="#" rel="tooltip" title="Make Changes in box, then Save Changes below." class="edit_franchise_tooltip"><i class="icon-edit"></i></a>
+					</td>
+					<td>						
+						<%= franchise_form.text_field :franchise_number %>
+						<a href="#" rel="tooltip" title="Make Changes in box, then Save Changes below." class="edit_franchise_tooltip"><i class="icon-edit"></i></a>
+					</td>
+					<td>
+						<%= franchise_form.link_to_remove "Remove Franchise", :class => "btn btn-danger" %>
+					</td>
+				</tr>	
+				</fieldset>				
+			<% end %>
+			</tbody>
+			</table>		
+									
+		<%= set_form.link_to_add "Add a Franchise", :franchises, :class => "btn btn-primary" %>
 						
-			<%= link_to 'New Franchise', "/franchise_sets/#{@franchise_set.id}/franchises/new", :class => 'btn btn-primary' %>
-			
-			
-	   </div>
-	   
-	   
-	
-	</div>
-	
+	   </div>	   	
+	</div>	
 </div>
 
-
-
 <div class="actions span12">		
-	<%= f.submit :class => 'btn btn-primary'%>
+	<%= set_form.submit "Save Changes", :class => 'btn btn-primary'%>
 	<%= link_to 'Cancel', franchise_sets_path, :class => 'btn ' %>
 </div>
 

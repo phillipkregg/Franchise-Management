@@ -12,6 +12,7 @@ gem 'pg'
 gem 'twitter_bootstrap_form_for'
 
 
+
 group :development do
   gem 'sqlite3' 
 end
@@ -23,6 +24,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.0.2'
+  gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
   
 end
 

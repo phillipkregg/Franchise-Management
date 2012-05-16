@@ -2,9 +2,8 @@ class FranchisesController < ApplicationController
   # GET /franchises
   # GET /franchises.json
       
-  def index
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @franchises = franchise_set.franchises
+  def index    
+    @franchises = Franchise.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,9 +13,8 @@ class FranchisesController < ApplicationController
 
   # GET /franchises/1
   # GET /franchises/1.json
-  def show
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @franchise = franchise_set.franchises.find(params[:id])
+  def show    
+    @franchise = Franchise.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,9 +24,9 @@ class FranchisesController < ApplicationController
 
   # GET /franchises/new
   # GET /franchises/new.json
-  def new
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @franchise = franchise_set.franchises.build
+  def new    
+    @franchise_set = FranchiseSet.find(params[:franchise_set_id])
+    @franchise = @franchise_set.franchises.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,20 +35,20 @@ class FranchisesController < ApplicationController
   end
 
   # GET /franchises/1/edit
-  def edit
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @franchise = franchise_set.franchises.find(params[:id])
+  def edit    
+    @franchise = Franchise.find(params[:id])
   end
 
   # POST /franchises
   # POST /franchises.json
-  def create
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @franchise = franchise_set.franchises.create(params[:franchise])
+  def create    
+    @franchise_set = FranchiseSet.find(params[:franchise_set_id])
+    @franchise = @franchise_set.franchises.build(params[:franchise])
 
     respond_to do |format|
       if @franchise.save
-        format.html { redirect_to "/franchise_sets/#{franchise_set.id}/edit", notice: 'Franchise was successfully created.' }
+        franchise_set = FranchiseSet.find(params[:franchise_set_id])
+        format.html { redirect_to "/franchise_sets/#{franchise_set.id}/edit", :franchise_set_id => franchise_set.id, notice: 'Franchise was successfully created.' }
         format.json { render json: @franchise, status: :created, location: @franchise }
       else
         format.html { render action: "new" }
@@ -61,9 +59,8 @@ class FranchisesController < ApplicationController
 
   # PUT /franchises/1
   # PUT /franchises/1.json
-  def update
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @franchise = franchise_set.franchises.find(params[:id])
+  def update    
+    @franchise = Franchise.find(params[:id])
 
     respond_to do |format|
       franchise_set = FranchiseSet.find(params[:franchise_set_id])
@@ -79,12 +76,12 @@ class FranchisesController < ApplicationController
 
   # DELETE /franchises/1
   # DELETE /franchises/1.json
-  def destroy
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @franchise = franchise_set.franchises.find(params[:id])
+  def destroy    
+    @franchise = Franchise.find(params[:id])
     @franchise.destroy
 
     respond_to do |format|
+      franchise_set = FranchiseSet.find(params[:franchise_set_id])
       format.html { redirect_to "/franchise_sets/#{franchise_set.id}/edit" }
       format.json { head :ok }
     end

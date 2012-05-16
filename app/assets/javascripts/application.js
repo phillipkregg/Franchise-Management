@@ -8,12 +8,10 @@
 //= require jquery_ujs
 //= require kendo.all.min.js
 //= require bootstrap
+//= require jquery_nested_form
 
 
 $(document).ready(function() {
-	
-	
-	
 	
 //  Modal Window 
 	$(function(){
@@ -50,6 +48,9 @@ $(document).ready(function() {
 
 	});
 	
+	
+	
+	$('.edit_franchise_tooltip').tooltip();
 	
 	
 	

@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  def index
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @users = franchise_set.users
+  def index    
+    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,9 +12,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @user = franchise_set.users.find(params[:id])
+  def show    
+    @user = User.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,10 +23,8 @@ class UsersController < ApplicationController
 
   # GET /users/new
   # GET /users/new.json
-  def new
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @user = franchise_set.users.build
-
+  def new   
+    @user = User.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -36,19 +32,18 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @user = franchise_set.users.find(params[:id])
+  def edit    
+    @user = User.find(params[:id])
   end
 
   # POST /users
   # POST /users.json
-  def create
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @user = franchise_set.users.create(params[:user])
+  def create    
+    @user = User.create(params[:user])
 
     respond_to do |format|
       if @user.save
+        franchise_set = FranchiseSet.find(params[:franchise_set_id])
         format.html { redirect_to "/franchise_sets/#{franchise_set.id}/edit", notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -60,9 +55,8 @@ class UsersController < ApplicationController
 
   # PUT /users/1
   # PUT /users/1.json
-  def update
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @user = franchise_set.users.find(params[:id])
+  def update    
+    @user = User.find(params[:id])
 
     respond_to do |format|
       franchise_set = FranchiseSet.find(params[:franchise_set_id])
@@ -78,12 +72,12 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
-  def destroy
-    franchise_set = FranchiseSet.find(params[:franchise_set_id])
-    @user = franchise_set.users.find(params[:id])
+  def destroy    
+    @user = User.find(params[:id])
     @user.destroy
 
     respond_to do |format|
+      franchise_set = FranchiseSet.find(params[:franchise_set_id])
       format.html { redirect_to "/franchise_sets/#{franchise_set.id}/edit" }
       format.json { head :ok }
     end
