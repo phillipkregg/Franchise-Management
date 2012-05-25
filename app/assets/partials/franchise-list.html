@@ -1,0 +1,19 @@
+
+<h3>This is the external template</h3>
+
+<table class="table">
+	<thead>
+		<th>Franchise Name</th>
+		<th>Franchise Number</th>
+		<th></th>
+		<th><a class="btn btn-primary btn-small">New Franchise</a></th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="franchise in franchises">
+			<td>{{franchise.franchise_name}}</td>
+			<td>{{franchise.franchise_number}}</td>
+			<td><a class="btn btn-mini">Edit</a></td>
+			<td><a class="btn btn-danger btn-mini">Delete</a></td>
+		</tr>
+	</tbody>
+</table>

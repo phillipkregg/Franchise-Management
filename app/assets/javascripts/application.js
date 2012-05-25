@@ -4,76 +4,33 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
+
 //= require jquery
 //= require jquery_ujs
 //= require kendo.all.min.js
 //= require bootstrap
 //= require jquery_nested_form
+//= require angular
+//= require ./app/app
+//= require ./app/services
+//= require angular-resource
+//= require ./app/controllers
 
 
 $(document).ready(function() {
-	
-//  Modal Window 
-	// $(function(){
-	  // var $modal = $('#modal'),
-	      // $modal_close = $modal.find('.close'),
-	      // $modal_container = $('#modal-container');
-// 
-// 
-	  // // This bit can be confusing. Since Rails.js sends an accept header asking for
-	  // // javascript, but we want it to return HTML, we need to override this instead.
-	  // $('a[data-remote]').bind('ajax:beforeSend', function(e, xhr, settings){
-	    // xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
-	  // });
-// 
-	  // // Handle modal links with the data-remote attribute
-	  // $('a[data-remote]').bind('ajax:success', function(xhr, data, status){
-	    // $modal
-	      // .html(data)
-	      // .prepend($modal_close)
-	      // .css('top', $(window).scrollTop() + 40)
-	      // .show();
-	    // $modal.fadeIn("fast");	    
-	    // $modal_container.fadeIn("fast");
-// 
-	  // });
-// 
-	  // // Hide close button click
-	  // $('.close', '#modal').live('click', function(){
-	    // $modal_container.hide();
-	    // $modal.hide();
-// 
-	  // });	 
-// 
-// 
-	// });
-	
-	
-	
-	$('.edit_franchise_tooltip').tooltip();
-	
-	
-	
-	/***** Kendo Grids *****/
-	
-	// Franchise grid
-	
-	$("#franchises_grid").kendoGrid({
-		groupable: true,
-      scrollable: true,
-      sortable: true,
-      pageable: true
-	});
+	$("#new_franchise_table").hide();
 	
 	
 	
 	
-	
-	
-	
-	
+})
+
+
+
 	
 	
 	
 
-});
+
+
+

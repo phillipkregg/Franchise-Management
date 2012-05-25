@@ -1,3 +1,76 @@
+<div >
+	
+	<table class="table">
+		<thead>
+			<th>Franchise Name</th>
+			<th>Franchise Number</th>
+			<th></th>
+			<th><a ng-click="newForm()" class="btn btn-primary btn-small">New Franchise</a></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="franchise in franchises" >
+				<td ng-model="franchiseName">{{franchise.franchise_name}}</td>
+				<td ng-model="franchiseNumber">{{franchise.franchise_number}}</td>
+				<td><a class="btn btn-mini">Edit</a></td>
+				<td><a ng-click="destroyFranchise()" class="btn btn-danger btn-mini">Delete</a></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	
+	<table id="new_franchise_table" class="table">
+		<thead>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr>				
+				<form>
+					<td>
+			        <input type="text" ng-model="franchiseName"  size="30"
+			               placeholder="Franchise Name">
+		         </td>
+		         <td>
+		           <input type="text" ng-model="franchiseNumber"  size="30"
+		            		placeholder="Franchise Number">
+	           </td>
+	           <td>
+	           	 <a ng-click="cancelAdd()" class="btn">Cancel</a>
+	           </td>
+	           <td>
+		        	<input ng-click="saveFranchise()" class="btn-primary" type="submit" value="Save Franchise">
+		        </td>
+		      </form>
+		     
+	      </tr>
+      </tbody>
+	</table>
+	
+	
+	
+	<!-- <table class="table">
+		<thead>
+			<th>Franchise Name</th>
+			<th>Franchise Number</th>
+			<th></th>
+			<th><a class="btn btn-primary btn-small">New Franchise</a></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="franchise in franchises">
+				<td>{{franchise.franchise_name}}</td>
+				<td>{{franchise.franchise_number}}</td>
+				<td><a class="btn btn-mini">Edit</a></td>
+				<td><a class="btn btn-danger btn-mini">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+	 -->
+
+
+
+
 <%= nested_form_for(@franchise_set) do |set_form| %>
 		  <% if @franchise_set.errors.any? %>
 		    <div id="error_explanation">
@@ -137,3 +210,28 @@
 
 
 <% end %>
+
+
+</div>
+
+
+
+
+
+
+<!-- Pass franchise set id into javascript  -->
+<script type="text/javascript">
+
+	
+		var franchise_set_id = <%= @franchise_set.id %>
+		//alert(franchise_set_id)
+		
+
+	
+</script>
+
+
+
+
+
+
